@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.ico"
+      type="image/x-icon"
+    />
+    <title>الملف الشخصي لعبد العزيز ياسر</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body onload="loaderTime()">
+    <!-- MODALS -->
+    <div id="chat-or-profile" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>الى اين تريد الذهاب الان؟</h1>
+        <a href="./profile.html">زيارة البروفايل</a>
+        <a href="./chat.html">التحدث مباشرة</a>
+      </div>
+    </div>
+    <div id="signin-sign-up" class="modal">
+      <div class="modal-content">
+        <div class="signin-head" style="display: none">
+          <h4>سجل الدخول</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <div class="signup-head" style="display: none">
+          <h4>انشئ حسابا</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <hr style="background-color: #fff" />
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <form action="./profile.html" id="signin-body" style="display: none">
+          <input type="email" placeholder="Email :" />
+          <input type="password" placeholder="ادخل كلمة السر:" />
+          <button type="submit">سجل الدخول</button>
+        </form>
+        <form
+          onsubmit="if (document.querySelector('#pass').value !=  document.querySelector('#re-pass').value) {alert('تأكد من كلمة السر')}; event.preventDefault();returnToPreviousPage();return false"
+          action="./complete.html"
+          id="signup-body"
+          style="display: none"
+        >
+          <input type="email" placeholder="Email :" />
+          <input id="pass" type="password" placeholder="ادخل كلمة السر :" />
+          <input
+            id="re-pass"
+            type="password"
+            placeholder="ادخل كلمة السر مرة اخرى :"
+          />
+          <button type="submit">انشاء الحساب</button>
+        </form>
+      </div>
+    </div>
+    <div id="profile-send-email" class="modal">
+      <div class="modal-content">
+        <span class="PSEclose">&times;</span>
+        <label for="email-subject"><h1>العنوان</h1></label>
+        <input id="email-subject" type="text" placeholder="العنوان" required />
+        <h1>المحتوى</h1>
+        <label for="email-content"></label>
+        <textarea id="email-content" placeholder="المحتوى" cols="30" rows="10" required></textarea>
+        <hr>
+        <a href="mailto:lolbraid@gmail.com?subject=&body=">ارسل الايميل</a>
+      </div>
+    </div>
+
+    <!-- LOADER -->
+    <div id="loader"></div>
+    <!-- MAIN SECTION -->
+    <div id="main">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo">توظيف</div>
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+          <!-- USING CHECKBOX HACK -->
+          <input
+            type="checkbox"
+            id="checkbox_toggle"
+            onclick="(function d(){
+          if (document.querySelector('#checkbox_toggle').checked) {
+            document.querySelector('.navbar').style.paddingBottom = '300px'
+
+          }else {
+            document.querySelector('.navbar').style.paddingBottom = '20px'
+
+          }
+        })()"
+          />
+          <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+          <!-- NAVIGATION MENUS -->
+          <div class="menu">
+            <li><a href="./index.html">الرئيسية</a></li>
+            <li><a href="./about-us.html">من نحن؟</a></li>
+            <li>
+              <a href="./contact-us.html">تواصل معنا</a>
+            </li>
+            <li class="categories">
+              <a>التصنيفات</a>
+              <!-- DROPDOWN MENU -->
+              <ul class="dropdown">
+                <li><a href="./categore.html">البرمجة </a></li>
+                <li><a href="./categore.html">الاعلانات</a></li>
+                <li><a href="./categore.html">التسويق</a></li>
+                <li><a href="./categore.html">كتابة الايميلات</a></li>
+                <li><a href="./categore.html">الهكر</a></li>
+              </ul>
+            </li>
+
+            <li class="signIU in"><a>تسجيل الدخول</a></li>
+            <li class="signIU"><a>انشاء حساب</a></li>
+          </div>
+        </ul>
+      </nav>
+
+      <div class="profile-header section">
+        <div class="d-flex">
+          <div class="profile-pic"></div>
+          <div class="profile-summary">
+            <h1>عبد العزيز ياسر</h1>
+            <p>
+              خسائر اللازمة ومطالبة حدة بل. الآخر الحلفاء أن غزو, إجلاء وتنامت
+              عدد مع. لقهر معركة لبلجيكا، بـ انه, ربع الأثنان المقيتة في, اقتصّت
+              المحور حدة و. هذه ما طرفاً عالمية استسلام, الصين وتنامت حين ٣٠,
+              ونتج والحزب المذابح كل جوي. أسر كارثة المشتّتون بل, وبعض وبداية
+              الصفحة غزو قد, أي بحث تعداد الجنوب.
+            </p>
+          </div>
+        </div>
+
+        <div class="section d-flex justify-content-around profile-contact">
+          <a href="tel:+965-xxxxxxxx">
+            +965-97240630<i class="fas fa-mobile-alt"></i>
+          </a>
+          <a id="profile-mail">
+            lolbraid@email.com <i class="fas fa-envelope"></i>
+          </a>
+          <a href="./chat.html">
+            محادثة   <i class="bi bi-chat-fill"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="section profile-main">
+        <div class="long-details">
+          <h3 class="section-head">
+            <i class="fas fa-graduation-cap"></i> التعليم
+          </h3>
+          <table class="timeline">
+            <tr>
+              <td class="time">3-4 , 2022</td>
+              <td class="event">
+                طالب في الكويت تبرمج<br />
+                😎😤
+              </td>
+            </tr>
+
+            <tr>
+              <td class="time">من المتوقع ان يتخرج في 2022</td>
+              <td class="event">
+                طالب ثانوية في <br />
+                الاخلاص الاهلية بنين
+              </td>
+            </tr>
+          </table>
+
+          <h3 class="section-head">
+            <i class="fas fa-business-time"></i> الخبرة
+          </h3>
+          <table class="timeline">
+            <tr>
+              لا يوجد
+            </tr>
+          </table>
+
+          <h3 class="section-head">
+            <i class="fas fa-drafting-compass"></i> المشاريع
+          </h3>
+          <table class="timeline">
+            <tr>
+              <td class="time">3 - 4, 2022</td>
+              <td class="event">
+                في الكويت تبرمج,
+                <ul class="circle-bullet">
+                  <li>بناء هذا الموقع,</li>
+                  <li>تمت الكتابة بHTML , CSS , JAVASCRIPT</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="short-details">
+          <h3 class="skills section-head">
+            <i class="fas fa-star"></i> المهارات
+          </h3>
+          <ul>
+            <li>
+              HTML
+              <div class="bar bar-html"></div>
+            </li>
+            <li>
+              CSS
+              <div class="bar bar-css"></div>
+            </li>
+            <li>
+              JavaScript
+              <div class="bar bar-js">
+                <div class="current" style="width: 80%"></div>
+                <div class="full"></div>
+              </div>
+            </li>
+          </ul>
+
+          <h3 class="section-head"><i class="fas fa-award"></i> الجوائز</h3>
+          <ul class="circle-bullet type2">
+            <li>ما فزت بشي بس ادعولي افوز بالكويت تبرمج😊</li>
+          </ul>
+
+
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="navbar d-flex flex-column align-items-center">
+        <div class="social">
+          <a href="javascript:void(0)"><i class="bi bi-discord"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-facebook"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-github"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-instagram"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-linkedin"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-pinterest"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-telegram"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-twitter"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-youtube"></i></a>
+        </div>
+        <div class="copyright"><p>© 2022 LOLBRAID All right reseved</p></div>
+      </footer>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f355e04c5f.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>توظيف</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body onload="loaderTime()">
+    <div id="loader"></div>
+    <div id="main">
+      <div id="signin-sign-up" class="modal" style="display: block">
+        <div class="modal-content" style="top: 0; margin-bottom: 50px">
+          <div class="signup-head">
+            <h4>اكمل البيانات</h4>
+          </div>
+          <div class="signin-head" style="display: none">
+            <h4>سجل الدخول</h4>
+          </div>
+          <hr style="background-color: #fff" />
+
+
+
+
+          <form
+            class="align-items-start"
+            action="./profile.html"
+            id="signup-body"
+            style="margin: 20px"
+          >
+            <input type="text" placeholder="الاسم الاول: " required/>
+            <br />
+            <input type="text" placeholder="الاسم الاخير: " required/>
+            <br />
+            <input type="number" placeholder="phone number: " required/>
+            <br />
+            <div class="d-flex flex-column">
+              <h1>الجنس</h1>
+              <br />
+              <div class="d-flex">
+                <input
+                  style="width: 13px; height: 13px"
+                  type="radio"
+                  name="sex"
+                  id="man"
+                   required
+                />
+                <label for="man">رجل</label>
+
+                <input
+                  style="width: 13px; height: 13px"
+                  type="radio"
+                  name="sex"
+                  id="woman"
+                   required
+                />
+                <label for="woman">امرأة</label>
+              </div>
+            </div>
+            <br />
+
+            <div class="d-flex flex-column">
+              <h1>نوع الحساب</h1>
+              <br />
+              <div class="d-flex">
+                <label for="freelance">ابحث عن عمل</label>
+                <input
+                  style="width: 13px; height: 13px"
+                  type="radio"
+                  name="type"
+                  id="freelance"
+                   required
+                />
+                <label for="company">شركة</label>
+                <input
+                  style="width: 13px; height: 13px"
+                  type="radio"
+                  name="type"
+                  id="company"
+                   required
+                />
+              </div>
+              <div class="d-flex mt-5">
+                <label for="read">لقد قرأت ووافقت على الشروط والاحكام</label>
+                <input type="checkbox" id="read" required>
+              </div>
+            </div>
+            <br />
+
+            <hr style="width: 100%; background-color: #fff" />
+            <button style="align-self: center; width: 200px" type="submit">
+              <span style="font-size: 25px">&#8594;</span> تحديث المعلومات
+            </button>
+          </form>
+
+
+
+
+          <form
+            class="align-items-start"
+            action="./profile.html"
+            id="signin-body"
+            style="margin: 20px; display: none"
+          >
+            <input type="email" placeholder="Email: " required/>
+            <input type="password" placeholder="كلمة السر: " required/>
+            <br />
+
+            <hr style="width: 100%; background-color: #fff" />
+            <button style="align-self: center; width: 200px" type="submit">
+              <span style="font-size: 25px">&#8594;</span> سجل الدخول
+            </button>
+          </form>
+          <p>لديك حساب؟<button onclick="fromInToUp()">سجل الدخول</button></p>
+        </div>
+      </div>
+    </div>
+
+    <script></script>
+    <script src="./assets/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f355e04c5f.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

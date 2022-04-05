@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نتائج البحث عن "مبرمج مواقع"</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.ico"
+      type="image/x-icon"
+    />
+    <style>
+      .card {
+        display: none;
+      }
+    </style>
+  </head>
+  <body onload="loaderTime()">
+    <!-- modals -->
+    <div id="chat-or-profile" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>الى اين تريد الذهاب الان؟</h1>
+        <a href="./profile.html">زيارة البروفايل</a>
+        <a href="./chat.html">التحدث مباشرة</a>
+      </div>
+    </div>
+    <div id="signin-sign-up" class="modal">
+      <div class="modal-content">
+        <div class="signin-head" style="display: none">
+          <h4>سجل الدخول</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <div class="signup-head" style="display: none">
+          <h4>انشئ حسابا</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <hr style="background-color: #fff" />
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <form action="./profile.html" id="signin-body" style="display: none">
+          <input type="email" placeholder="Email :" required />
+          <input type="password" placeholder="ادخل كلمة السر:" required />
+          <button type="submit">سجل الدخول</button>
+        </form>
+        <form
+          onsubmit="signUp(event)"
+          action="./complete.html"
+          id="signup-body"
+          style="display: none"
+        >
+          <input type="email" placeholder="Email :" required />
+          <input
+            type="password"
+            id="pass"
+            placeholder="ادخل كلمة السر :"
+            required
+          />
+          <input
+            type="password"
+            id="re-pass"
+            placeholder="ادخل كلمة السر مرة اخرى :"
+            required
+          />
+          <button type="submit">انشاء الحساب</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="loader"></div>
+    <div id="main">
+      <!-- NAVBAR -->
+      <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo">توظيف</div>
+        <!-- NAVIGATION MENU -->
+        <ul class="nav-links">
+          <!-- USING CHECKBOX HACK -->
+          <input
+            type="checkbox"
+            id="checkbox_toggle"
+            onclick="(function d(){
+          if (document.querySelector('#checkbox_toggle').checked) {
+            document.querySelector('.navbar').style.paddingBottom = '300px'
+
+          }else {
+            document.querySelector('.navbar').style.paddingBottom = '20px'
+
+          }
+        })()"
+          />
+          <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+          <!-- NAVIGATION MENUS -->
+          <div class="menu">
+            <li><a href="./index.html">الرئيسية</a></li>
+            <li><a href="./about-us.html">من نحن؟</a></li>
+            <li>
+              <a href="./contact-us.html">تواصل معنا</a>
+            </li>
+            <li class="categories">
+              <a>التصنيفات</a>
+              <!-- DROPDOWN MENU -->
+              <ul class="dropdown">
+                <li><a href="./categore.html">البرمجة </a></li>
+                <li><a href="./categore.html">الاعلانات</a></li>
+                <li><a href="./categore.html">التسويق</a></li>
+                <li><a href="./categore.html">كتابة الايميلات</a></li>
+                <li><a href="./categore.html">الهكر</a></li>
+              </ul>
+            </li>
+
+            <li class="signIU in"><a>تسجيل الدخول</a></li>
+            <li class="signIU"><a>انشاء حساب</a></li>
+          </div>
+        </ul>
+      </nav>
+
+      <!-- welcome and search section -->
+      <div class="welcome-section">
+        <div class="search-section">
+          <form action="./search-results.html" class="search-form">
+            <h4><label for="search-input">ابحث عن ما يجوب في خاطرك</label></h4>
+            <div class="input-container d-flex">
+              <div class="search-input">
+                <input
+                  id="search-input"
+                  onkeyup="search()"
+                  placeholder="ابحث عن ما يجوب في خاطرك"
+                />
+              </div>
+              <button type="submit" class="search-icon">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </form>
+          <div id="results">
+            <ul>
+              <a href="./search-results.html"><li>البرمجة</li></a>
+              <a href="./search-results.html"><li>الاعلانات</li></a>
+              <a href="./search-results.html"><li>التسويق</li></a>
+              <a href="./search-results.html"><li>كتابة الايميلات</li></a>
+              <a href="./search-results.html"><li>الهكر</li></a>
+              <a href="./search-results.html"><li>اقتراحات</li></a>
+              <a href="./search-results.html"><li>اقتراحات</li></a>
+            </ul>
+            <div id="no-results" style="display: none; color: #fff">
+              <h4>لا يوجد نتائج</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div
+        class="section d-flex flex-column justify-content-center align-items-center"
+      >
+        <div class="results-header d-flex justify-content-between">
+          <h2>67492 نتيجة للبحث عن "مبرمج مواقع"</h2>
+          <div>
+            <span>الترتيب حسب:</span>
+            <select name="sort" id="sort">
+              <option value="0">الاعلى تصنيفا</option>
+              <option value="1">الاقل تصنيفا</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="results">
+          <div class="filters">
+            <h3>فلتر</h3>
+            <label for="filters_toggle"
+              ><i class="bi bi-funnel-fill"></i
+            ></label>
+            <input
+              type="checkbox"
+              id="filters_toggle"
+              onclick="(function i () {
+              if (event.target.checked) {
+                document.querySelector('#filter-menu').style.display = 'flex'
+              } else {
+                document.querySelector('#filter-menu').style.display = 'none'
+              }
+            })()"
+            />
+            <div id="filter-menu">
+              <div>
+                <label for="a">a</label>
+                <input type="checkbox" name="filter" id="a" />
+              </div>
+              <div>
+                <label for="b">b</label>
+                <input type="checkbox" name="filter" id="b" />
+              </div>
+              <div>
+                <label for="c">c</label>
+                <input type="checkbox" name="filter" id="c" />
+              </div>
+              <div>
+                <label for="d">d</label>
+                <input type="checkbox" name="filter" id="d" />
+              </div>
+              <div>
+                <label for="e">e</label>
+                <input type="checkbox" name="filter" id="e" />
+              </div>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="display: block">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-top"></div>
+              <div class="avatar-holder">
+                <img src="./assets/images/profile.png" alt="صورة الغلاف" />
+              </div>
+              <div class="name-holder">
+                <a class="name" href="javascript:void(0)">عبد العزيز ياسر</a>
+                <h6 title="المتابعين">
+                  <i class="fas fa-users"></i> <span class="followers">90</span>
+                </h6>
+              </div>
+              <div class="follow-button">
+                <a
+                  class="btn follow"
+                  onmousedown="follow(this.parentElement.parentElement);"
+                >
+                  <i class="fas fa-user-plus"></i>متابعة
+                </a>
+              </div>
+              <div class="card-info">
+                <div class="ds works">
+                  <h6
+                    class="info-h6"
+                    title="عدد المشاريع والاعمال التي قام بها سابقا"
+                  >
+                    <i class="fas fa-edit"></i>الاعمال السابقة
+                  </h6>
+                  <p>29</p>
+                </div>
+                <div class="ds projects">
+                  <h6 class="info-h6" title="عدد المشاريع التي قام بانشائها ">
+                    <i class="fas fa-project-diagram"></i>المشاريع
+                  </h6>
+                  <p>0</p>
+                </div>
+                <div class="ds posts">
+                  <h6 class="info-h6" title="التقييم">
+                    <i class="fas fa-star"></i>التقييم
+                  </h6>
+                  <p>0</p>
+                </div>
+              </div>
+              <div class="card-skills">
+                <h6>Skill <i class="fa fa-code" aria-hidden="true"></i></h6>
+                <div class="skill html">
+                  <h6><i class="fab fa-html5"></i> HTML5</h6>
+                  <div class="bar bar-html">
+                    <p>95%</p>
+                  </div>
+                </div>
+                <div class="skill css">
+                  <h6><i class="fab fa-css3-alt"></i> CSS3</h6>
+                  <div class="bar bar-css">
+                    <p>90%</p>
+                  </div>
+                </div>
+                <div class="skill javascript">
+                  <h6><i class="fab fa-js"></i> JavaScript</h6>
+                  <div class="bar bar-js">
+                    <p>75%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button id="loadMore">تحميل المزيد</button>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="navbar d-flex flex-column align-items-center">
+        <div class="social">
+          <a href="javascript:void(0)"><i class="bi bi-discord"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-facebook"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-github"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-instagram"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-linkedin"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-pinterest"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-telegram"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-twitter"></i></a>
+          <a href="javascript:void(0)"><i class="bi bi-youtube"></i></a>
+        </div>
+        <div class="copyright"><p>© 2022 LOLBRAID All right reseved</p></div>
+      </footer>
+    </div>
+
+    <script></script>
+    <script src="./assets/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f355e04c5f.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

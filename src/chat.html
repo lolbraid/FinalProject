@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.ico"
+      type="image/x-icon"
+    />
+    <title>توظيف</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+      integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body onload="loaderTime()">
+    <!-- MODALS -->
+    <div id="chat-or-profile" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>الى اين تريد الذهاب الان؟</h1>
+        <a href="./profile.html">زيارة البروفايل</a>
+        <a href="./chat.html">التحدث مباشرة</a>
+      </div>
+    </div>
+    <div id="signin-sign-up" class="modal">
+      <div class="modal-content">
+        <div class="signin-head" style="display: none">
+          <h4>سجل الدخول</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <div class="signup-head" style="display: none">
+          <h4>انشئ حسابا</h4>
+          <span class="SIUclose">&times; </span>
+        </div>
+        <hr style="background-color: #fff" />
+        <!-- ----------------------------------------------------------------------------------------------------- -->
+        <form action="./profile.html" id="signin-body" style="display: none">
+          <input type="email" placeholder="Email :" />
+          <input type="password" placeholder="ادخل كلمة السر:" />
+          <button type="submit">سجل الدخول</button>
+        </form>
+        <form
+          onsubmit="signUp(event)"
+          action="./complete.html"
+          id="signup-body"
+          style="display: none"
+        >
+          <input type="email" placeholder="Email :" />
+          <input id="pass" type="password" placeholder="ادخل كلمة السر :" />
+          <input
+            id="re-pass"
+            type="password"
+            placeholder="ادخل كلمة السر مرة اخرى :"
+          />
+          <button type="submit">انشاء الحساب</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOADER -->
+    <div id="loader"></div>
+    <!-- MAIN SECTION -->
+    <div id="main">
+      <div id="chat-container" class="section">
+        <div class="chat-name section">
+          <i style="font-size: 20px; padding-left: 5px" class="bi bi-globe"></i>
+          محادثة عالمية
+        </div>
+
+        <div id="chat" class="section">
+          <div id="user1-chat" class="chat hide">
+            <div class="from-other">hi 1</div>
+          </div>
+          <div id="user2-chat" class="chat hide">
+            <div class="from-other">hi 2</div>
+          </div>
+
+          <div id="user3-chat" class="chat hide">
+            <div class="from-other">hi3</div>
+          </div>
+          <div id="user4-chat" class="chat hide">
+            <div class="from-other">hi 4</div>
+          </div>
+          <div id="user5-chat" class="chat hide">
+            <div class="from-other">hi 5</div>
+          </div>
+          <div id="global-chat" class="chat">
+            <div class="from-other">global</div>
+            <div class="from-me">global</div>
+            <div class="from-other">global</div>
+
+          </div>
+        </div>
+        <div
+          id="user-menu"
+          class="section d-flex flex-column"
+          onmousedown="userMenu()"
+        >
+          <i class="bi bi-list"></i>
+          <a style="color: inherit" href="./index.html"> <p>توظيف</p></a>
+        </div>
+        <div class="section user-list" style="display: flex">
+          <div style="width: 100%">
+            <!-- <div class="user-search search-form">
+                    <input id="search-input" type="text">
+                </div> -->
+            <div onmousedown="chat('user1')" class="user">
+              <div class="profile-avatar-holder">
+                <img src="./assets/images/profile.png" alt="" />
+              </div>
+              <div>
+                <p class="user-name">عبد العزيز</p>
+                <p>بلا بلا بلا بلا بلا</p>
+              </div>
+              <div class="last-seen">منذ يومين</div>
+            </div>
+            <div onmousedown="chat('user2')" class="user">
+              <div class="profile-avatar-holder">
+                <img src="./assets/images/profile.png" alt="" />
+              </div>
+              <div>
+                <p class="user-name">عبد العزيز</p>
+                <p>بلا بلا بلا بلا بلا</p>
+              </div>
+              <div class="last-seen">منذ يومين</div>
+            </div>
+            <div onmousedown="chat('user3')" class="user">
+              <div class="profile-avatar-holder">
+                <img src="./assets/images/profile.png" alt="" />
+              </div>
+              <div>
+                <p class="user-name">عبد العزيز</p>
+                <p>بلا بلا بلا بلا بلا</p>
+              </div>
+              <div class="last-seen">منذ يومين</div>
+            </div>
+            <div onmousedown="chat('user4')" class="user">
+              <div class="profile-avatar-holder">
+                <img src="./assets/images/profile.png" alt="" />
+              </div>
+              <div>
+                <p class="user-name">عبد العزيز</p>
+                <p>بلا بلا بلا بلا بلا</p>
+              </div>
+              <div class="last-seen">منذ يومين</div>
+            </div>
+            <div onmousedown="chat('user5')" class="user">
+              <div class="profile-avatar-holder">
+                <img src="./assets/images/profile.png" alt="" />
+              </div>
+              <div>
+                <p class="user-name">عبد العزيز</p>
+                <p>بلا بلا بلا بلا بلا</p>
+              </div>
+              <div class="last-seen">منذ يومين</div>
+            </div>
+          </div>
+          <br />
+          <div onmousedown="chat('global')" class="global user">
+            <div class="profile-avatar-holder">
+              <img src="./assets/images/profile.png" alt="" />
+            </div>
+            <div>
+              <p class="user-name">عالمي</p>
+              <p>بلا بلا بلا بلا بلا</p>
+            </div>
+          </div>
+        </div>
+        <div class="chat-box section">
+          <div>
+            <textarea placeholder="اكتب ما تريد ...." id="message-input"></textarea>
+            <button
+              onclick="send(document.getElementById('message-input'), document.querySelector('#chat'))"
+            >
+              ارسال
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f355e04c5f.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
