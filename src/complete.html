@@ -30,20 +30,22 @@
           </div>
           <hr style="background-color: #fff" />
 
-
-
-
           <form
             class="align-items-start"
             action="./profile.html"
             id="signup-body"
             style="margin: 20px"
           >
-            <input type="text" placeholder="الاسم الاول: " required/>
+            <input type="text" placeholder="الاسم الاول: " required />
             <br />
-            <input type="text" placeholder="الاسم الاخير: " required/>
+            <input type="text" placeholder="الاسم الاخير: " required />
             <br />
-            <input type="number" placeholder="phone number: " required/>
+            <input
+              type="number"
+              placeholder="phone number: "
+              min="0"
+              required
+            />
             <br />
             <div class="d-flex flex-column">
               <h1>الجنس</h1>
@@ -54,7 +56,7 @@
                   type="radio"
                   name="sex"
                   id="man"
-                   required
+                  required
                 />
                 <label for="man">رجل</label>
 
@@ -63,7 +65,7 @@
                   type="radio"
                   name="sex"
                   id="woman"
-                   required
+                  required
                 />
                 <label for="woman">امرأة</label>
               </div>
@@ -80,7 +82,7 @@
                   type="radio"
                   name="type"
                   id="freelance"
-                   required
+                  required
                 />
                 <label for="company">شركة</label>
                 <input
@@ -88,12 +90,12 @@
                   type="radio"
                   name="type"
                   id="company"
-                   required
+                  required
                 />
               </div>
               <div class="d-flex mt-5">
                 <label for="read">لقد قرأت ووافقت على الشروط والاحكام</label>
-                <input type="checkbox" id="read" required>
+                <input type="checkbox" id="read" required />
               </div>
             </div>
             <br />
@@ -104,17 +106,14 @@
             </button>
           </form>
 
-
-
-
           <form
             class="align-items-start"
             action="./profile.html"
             id="signin-body"
             style="margin: 20px; display: none"
           >
-            <input type="email" placeholder="Email: " required/>
-            <input type="password" placeholder="كلمة السر: " required/>
+            <input type="email" placeholder="Email: " required />
+            <input type="password" placeholder="كلمة السر: " required />
             <br />
 
             <hr style="width: 100%; background-color: #fff" />
