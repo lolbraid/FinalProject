@@ -7,6 +7,59 @@
 //     document.getElementById("main").style.display = "block";
 //   }
 // }
+function animateOnScrool() {
+  var workers = document.querySelectorAll(".worker-card");
+  var SCards = document.querySelectorAll(".s-card");
+  var windowHeight = window.innerHeight;
+  var elementVisible = 150;
+  for (let i = 0; i < workers.length; i++) {
+    var card = workers[i];
+    var elementTop = card.getBoundingClientRect().top;
+    if (elementTop < windowHeight - elementVisible) {
+      card.classList.add("active");
+      card.getElementsByClassName("card-top")[0].classList.add("animate");
+      card.getElementsByClassName("avatar-holder")[0].classList.add("animate");
+      card.getElementsByClassName("name-holder")[0].classList.add("animate");
+      card.getElementsByClassName("follow-button")[0].classList.add("animate");
+      card.getElementsByClassName("works")[0].classList.add("animate");
+      card.getElementsByClassName("projects")[0].classList.add("animate");
+      card.getElementsByClassName("posts")[0].classList.add("animate");
+      card.getElementsByClassName("card-skills")[0].classList.add("animate");
+      card.querySelector(".bar p").classList.add("animate");
+      card.getElementsByClassName("bar-html")[0].classList.add("animate");
+      card.getElementsByClassName("bar-css")[0].classList.add("animate");
+      card.getElementsByClassName("bar-js")[0].classList.add("animate");
+    } else {
+      card.classList.remove("active");
+      card.getElementsByClassName("card-top")[0].classList.remove("animate");
+      card
+        .getElementsByClassName("avatar-holder")[0]
+        .classList.remove("animate");
+      card.getElementsByClassName("name-holder")[0].classList.remove("animate");
+      card
+        .getElementsByClassName("follow-button")[0]
+        .classList.remove("animate");
+      card.getElementsByClassName("works")[0].classList.remove("animate");
+      card.getElementsByClassName("projects")[0].classList.remove("animate");
+      card.getElementsByClassName("posts")[0].classList.remove("animate");
+      card.getElementsByClassName("card-skills")[0].classList.remove("animate");
+      card.querySelector(".bar p").classList.remove("animate");
+      card.getElementsByClassName("bar-html")[0].classList.remove("animate");
+      card.getElementsByClassName("bar-css")[0].classList.remove("animate");
+      card.getElementsByClassName("bar-js")[0].classList.remove("animate");
+    }
+  }
+  for (let i = 0; i < SCards.length; i++) {
+    var element = SCards[i];
+    var elementTop = element.getBoundingClientRect().top;
+    if (elementTop < windowHeight - elementVisible) {
+      element.classList.add('active')
+    } else {
+      element.classList.remove('active')
+    }
+  }
+}
+window.addEventListener("scroll", animateOnScrool);
 
 function loaderTime() {
   setTimeout(showContent, 1000);
@@ -249,54 +302,63 @@ function chat(user) {
   user5Chat = document.getElementById("user5-chat");
   globalChat = document.getElementById("global-chat");
 
+  user1Chat.style.maxHeight=window.innerHeight
+  console.log(window.innerHeight)
+
   if (user === "user1") {
-    user1Chat.classList.remove('hide');
-    user2Chat.classList.add('hide');
-    user3Chat.classList.add('hide');
-    user4Chat.classList.add('hide');
-    user5Chat.classList.add('hide');
-    globalChat.classList.add('hide');
-    chatName.innerHTML = '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر'
+    user1Chat.classList.remove("hide");
+    user2Chat.classList.add("hide");
+    user3Chat.classList.add("hide");
+    user4Chat.classList.add("hide");
+    user5Chat.classList.add("hide");
+    globalChat.classList.add("hide");
+    chatName.innerHTML =
+      '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر';
   } else if (user === "user2") {
-    user1Chat.classList.add('hide');
-    user2Chat.classList.remove('hide');
-    user3Chat.classList.add('hide');
-    user4Chat.classList.add('hide');
-    user5Chat.classList.add('hide');
-    globalChat.classList.add('hide');
-    chatName.innerHTML = '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر'
+    user1Chat.classList.add("hide");
+    user2Chat.classList.remove("hide");
+    user3Chat.classList.add("hide");
+    user4Chat.classList.add("hide");
+    user5Chat.classList.add("hide");
+    globalChat.classList.add("hide");
+    chatName.innerHTML =
+      '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر';
   } else if (user === "user3") {
-    user1Chat.classList.add('hide');
-    user2Chat.classList.add('hide');
-    user3Chat.classList.remove('hide');
-    user4Chat.classList.add('hide');
-    user5Chat.classList.add('hide');
-    globalChat.classList.add('hide');
-    chatName.innerHTML = '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر'
+    user1Chat.classList.add("hide");
+    user2Chat.classList.add("hide");
+    user3Chat.classList.remove("hide");
+    user4Chat.classList.add("hide");
+    user5Chat.classList.add("hide");
+    globalChat.classList.add("hide");
+    chatName.innerHTML =
+      '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر';
   } else if (user === "user4") {
-    user1Chat.classList.add('hide');
-    user2Chat.classList.add('hide');
-    user3Chat.classList.add('hide');
-    user4Chat.classList.remove('hide');
-    user5Chat.classList.add('hide');
-    globalChat.classList.add('hide');
-    chatName.innerHTML = '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر'
+    user1Chat.classList.add("hide");
+    user2Chat.classList.add("hide");
+    user3Chat.classList.add("hide");
+    user4Chat.classList.remove("hide");
+    user5Chat.classList.add("hide");
+    globalChat.classList.add("hide");
+    chatName.innerHTML =
+      '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر';
   } else if (user === "user5") {
-    user1Chat.classList.add('hide');
-    user2Chat.classList.add('hide');
-    user3Chat.classList.add('hide');
-    user4Chat.classList.add('hide');
-    user5Chat.classList.remove('hide');
-    globalChat.classList.add('hide');
-    chatName.innerHTML = '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر'
+    user1Chat.classList.add("hide");
+    user2Chat.classList.add("hide");
+    user3Chat.classList.add("hide");
+    user4Chat.classList.add("hide");
+    user5Chat.classList.remove("hide");
+    globalChat.classList.add("hide");
+    chatName.innerHTML =
+      '<div style="margin: 5px;" class="profile-avatar-holder"><img src="./assets/images/profile.png" alt="" /></div> عبد العزيز ياسر';
   } else if (user === "global") {
-    user1Chat.classList.add('hide');
-    user2Chat.classList.add('hide');
-    user3Chat.classList.add('hide');
-    user4Chat.classList.add('hide');
-    user5Chat.classList.add('hide');
-    globalChat.classList.remove('hide');
-    chatName.innerHTML = '<i style="font-size: 20px; padding-left:5px;" class="bi bi-globe"></i> محادثة عالمية';
+    user1Chat.classList.add("hide");
+    user2Chat.classList.add("hide");
+    user3Chat.classList.add("hide");
+    user4Chat.classList.add("hide");
+    user5Chat.classList.add("hide");
+    globalChat.classList.remove("hide");
+    chatName.innerHTML =
+      '<i style="font-size: 20px; padding-left:5px;" class="bi bi-globe"></i> محادثة عالمية';
   }
 }
 
@@ -318,13 +380,14 @@ function userMenu() {
   }
 }
 function send(msgBox, chat) {
-  chat = chat.querySelector('div.chat:not(.hide)')
-  msg = msgBox.value
+  chat = chat.querySelector("div.chat:not(.hide)");
+  msg = msgBox.value;
   if (!msg) {
-    return
+    return;
   } else {
-    chat.innerHTML += `<div class="from-me">${msg}</div>`
-    msgBox.value = ''
+    chat.innerHTML += `<div class="from-me">${msg}</div>`;
+    msgBox.value = "";
     chat.scrollTop = chat.scrollHeight;
   }
 }
+

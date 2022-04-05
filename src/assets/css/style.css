@@ -6,6 +6,20 @@
   box-sizing: border-box;
   caret-color: #000000;
 }
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #5c5c5c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ff4d6d; 
+}
 a {
   text-decoration: none;
 }
@@ -307,7 +321,9 @@ body {
   width: 300px;
   height: 80px;
   background: crimson;
-  animation: cardTop 1.5s;
+}
+.card-top.animate {
+    animation: cardTop 1.5s;
 }
 .avatar-holder {
   position: absolute;
@@ -321,7 +337,9 @@ body {
   box-shadow: 0 0 0 5px #151515, 0 0 0 5px #000000;
   background: white;
   overflow: hidden;
-  animation: cardTop 1.5s;
+}
+.avatar-holder.animate{
+    animation: cardTop 1.5s;
 }
 .avatar-holder img {
   width: 100%;
@@ -339,6 +357,8 @@ body {
   width: inherit;
   height: 50px;
   text-align: center;
+}
+.name-holder.animate {
   animation: fadeIn 2s ease-in;
 }
 .name {
@@ -373,8 +393,10 @@ h6[title="المتابعين"] {
   width: inherit;
   height: 40px;
   text-align: center;
-  animation: fadeIn 2s ease-in;
   outline: none;
+}
+.follow-button.animate {
+    animation: fadeIn 2s ease-in;
 }
 .follow {
   padding: 5px 20px;
@@ -393,7 +415,15 @@ h6[title="المتابعين"] {
   color: white;
   background: crimson;
 }
-
+.s-card,
+.worker-card {
+  opacity: 0;
+  transition: all 1s;
+}
+.s-card.active,
+.worker-card.active {
+  opacity: 1;
+}
 .card-info {
   position: absolute;
   margin: auto;
@@ -413,8 +443,12 @@ h6[title="المتابعين"] {
   width: calc(300px / 3);
   text-align: center;
   color: white;
-  animation: fadeInMove 2s;
   animation-fill-mode: forwards;
+}
+.works.animate,
+.projects.animate,
+.posts.animate {
+    animation: fadeInMove 2s;
 }
 .info-h6 {
   color: crimson;
@@ -443,7 +477,10 @@ h6[title="المتابعين"] {
   left: 0;
   width: 250px;
   height: 100px;
+}
+.card-skills.animate {
   animation: mvBottom 1.5s;
+  
 }
 .card-skills h6 {
   margin-bottom: 5px;
@@ -471,7 +508,10 @@ h6[title="المتابعين"] {
   color: white;
   font-size: 8px;
   padding-top: 5px;
+}
+.bar p.animate {
   animation: fadeIn 5s;
+
 }
 .bar:hover {
   background: white;
@@ -479,19 +519,29 @@ h6[title="المتابعين"] {
 
 .bar-html {
   width: 95%;
-  animation: htmlSkill 1s;
   animation-delay: 0.4s;
+}
+.bar-html.animate {
+  animation: htmlSkill 1s;
+
 }
 .bar-css {
   width: 90%;
-  animation: cssSkill 2s;
   animation-delay: 0.4s;
+}
+.bar-css.animate {
+  animation: cssSkill 2s;
+
 }
 .bar-js {
   width: 75%;
-  animation: jsSkill 3s;
   animation-delay: 0.4s;
 }
+.bar-js.animate {
+  animation: jsSkill 3s;
+
+}
+
 
 @keyframes fadeInMove {
   0% {
