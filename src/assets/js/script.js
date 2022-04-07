@@ -231,7 +231,7 @@ try {
       profileSendEmailModal.style.display = "none";
     }
   };
-} catch (error) {}
+} catch (error) {console.log(error);}
 try {
   // load more button
   let loadmore = document.querySelector("#loadMore");
